@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>函数式组件使用props</title>
+  </head>
+  <body>
+    <!-- 准备好一个“容器” -->
+    <div id="test"></div>
+
+    <!-- 引入react核心库 -->
+    <script src="../js/react.development.js"></script>
+    <!-- 引入react-dom，用于支持react操作dom -->
+    <script src="../js/react-dom.development.js"></script>
+    <!-- 引入babel，用于将jsx转为js -->
+    <script src="../js/babel.min.js"></script>
+    <!-- 引入prop-types， 用于对组件标签进行限制 -->
+    <script src="../js/prop-types.js"></script>
+
+    <script type="text/babel">
+        // 创建函数式组件
+        function Person(props) {
+            const {name, age, sex} = props
+            return (
+            <ul>
+                <li>姓名： {name}</li>
+                <li>性别： {sex}</li>
+                <li>年龄： {age + 1}</li>
+            </ul>
+            )
+        }
+        Person.propTypes = {
+          name: PropTypes.string.isRequired,
+          sex: PropTypes.string,
+          age: PropTypes.number
+        };
+        // 指定标签默认属性值
+        Person.defaultProps = {
+          sex: "不男不女",
+          age: 18,
+        };
+        // 组件渲染到页面上
+        ReactDOM.render(<Person name={'jerry'}  sex={'女'}/> , document.getElementById('test'))
+
+    </script>
+  </body>
+</html>
