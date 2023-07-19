@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
+import Demo from './components/6_oprimize'
 
 export default class App extends Component {
   render() {
     return (
       <div>
-        <h2>App......</h2>
+        <Demo name="haung"/>
       </div>
     )
   }
